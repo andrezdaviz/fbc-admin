@@ -1,11 +1,22 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app color="background" width="240">
-    <v-list>
+  <v-navigation-drawer
+    v-model="drawer"
+    floating
+    app
+    color="background"
+    width="180"
+  >
+    <div class="text-center mt-5">
+      <h1 class="warning--text text-lg-h5 font-weight-bold">Freebetcoin</h1>
+    </div>
+    <v-divider class="mx-10 mt-3"></v-divider>
+    <v-list dense class="mt-5" nav>
       <v-list-item
         v-for="(item, i) in items"
         :key="i"
         :to="item.to"
-        router
+        link
+        color="foreground"
         exact
       >
         <v-list-item-action>
@@ -26,13 +37,33 @@ export default {
     items: [
       {
         icon: 'mdi-apps',
-        title: 'Welcome',
+        title: 'Dashboard',
         to: '/',
       },
       {
-        icon: 'mdi-chart-bubble',
-        title: 'Inspire',
-        to: '/inspire',
+        icon: 'mdi-flag',
+        title: 'Eventos',
+        to: '/eventos',
+      },
+      {
+        icon: 'mdi-chart-box',
+        title: 'Estadisticas',
+        to: '/charts',
+      },
+      {
+        icon: 'mdi-account-multiple',
+        title: 'Users',
+        to: '/user',
+      },
+      {
+        icon: 'mdi-cookie',
+        title: 'Anuncios',
+        to: '/ads',
+      },
+      {
+        icon: 'mdi-tune-vertical',
+        title: 'Configuración',
+        to: '/settings',
       },
     ],
   }),
