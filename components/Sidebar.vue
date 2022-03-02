@@ -3,8 +3,8 @@
     v-model="drawer"
     floating
     app
-    color="background"
-    width="180"
+    color="secondary"
+    width="240"
   >
     <div class="text-center mt-5">
       <h1 class="warning--text text-lg-h5 font-weight-bold">Freebetcoin</h1>

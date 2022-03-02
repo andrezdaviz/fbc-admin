@@ -60,11 +60,11 @@ export default {
       dark: true,
       themes: {
         dark: {
-          background: '#282C34',
+          background: '#545862',
           foreground: '#ABB2BF',
           primary: '#61AFEF',
           accent: '#C8CCD4',
-          secondary: '#545862',
+          secondary: '#282C34',
           info: '#56B6C2',
           warning: '#E5C07B',
           error: '#E06C75',

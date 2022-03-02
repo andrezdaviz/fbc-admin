@@ -27,12 +27,12 @@
       </v-row>
     </v-card>
     <v-toolbar color="transparent" flat>
-      <v-toolbar-title class="text-h4 font-weight-bold accent--text">
+      <v-toolbar-title class="text-h4 font-weight-bold accent--text ml-n4">
         Eventos
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-card color="transparent" flat>
-        <v-row justify="end">
+      <v-card color="transparent" class="mr-n4" flat>
+        <v-row no-gutters justify="end">
           <v-col cols="9">
             <v-card color="transparent" class="d-flex align-center" flat>
               <v-text-field
