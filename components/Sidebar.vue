@@ -27,6 +27,16 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+    <template v-slot:append>
+      <v-list-item link dense color="foreground">
+        <v-list-item-icon>
+          <v-icon>mdi-exit-to-app</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item></template
+    >
   </v-navigation-drawer>
 </template>
 
@@ -43,7 +53,7 @@ export default {
       {
         icon: 'mdi-flag',
         title: 'Eventos',
-        to: '/eventos',
+        to: '/events',
       },
       {
         icon: 'mdi-chart-box',
