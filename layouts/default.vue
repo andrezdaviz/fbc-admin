@@ -1,13 +1,9 @@
 <template>
   <v-app dark :style="{ background: $vuetify.theme.themes.dark.background }">
     <sidebar></sidebar>
-    <v-navigation-drawer
-      right
-      width="240"
-      color="background"
-      floating
-      app
-    ></v-navigation-drawer>
+    <v-navigation-drawer right width="240" color="background" floating app>
+      secodary
+    </v-navigation-drawer>
     <v-main>
       <v-container>
         <Nuxt />

@@ -62,7 +62,8 @@ export default {
         dark: {
           background: '#545862',
           foreground: '#ABB2BF',
-          primary: '#61AFEF',
+          opacity: '#484D56',
+          primary: '#0ea5e9',
           accent: '#C8CCD4',
           secondary: '#282C34',
           info: '#56B6C2',
