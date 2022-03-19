@@ -3,9 +3,7 @@ const express = require('express')
 // Create express instance
 const app = express()
 
-app.get('*', (req, res) => {
-  res.send('hola')
-})
+app.use('/', require('./routes'))
 
 // Export express app
 module.exports = module.exports = {
