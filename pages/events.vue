@@ -22,7 +22,7 @@
         </v-col>
         <v-col cols="4">
           <div class="float-right">
-            <v-btn color="primary" elevation="0"
+            <v-btn color="primary" flat @click="dialog = !dialog"
               ><v-icon left>mdi-plus-circle-outline</v-icon>Evento</v-btn
             >
           </div>
@@ -128,14 +128,15 @@
     </v-dialog>
   </v-container>
 </template>
-
+s
 <script>
+import moment from 'moment'
 import TableEvent from '~/components/Table.vue'
 import FormEvent from '~/components/Form.vue'
 export default {
   components: { TableEvent, FormEvent },
   data: () => ({
-    dialog: true,
+    dialog: false,
     headers: [
       {
         text: 'Dessert (100g serving)',
