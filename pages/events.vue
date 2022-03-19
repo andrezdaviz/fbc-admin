@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="px-4">
     <v-card color="transparent" flat>
       <v-row justify="center">
         <v-col cols="8">
@@ -7,13 +7,16 @@
             <v-text-field
               rounded
               dense
+              hide-details=""
               background-color="secondary"
-              color="accent"
-              prepend-inner-icon="mdi-magnify"
+              color="background"
               class="shrink"
               placeholder="Buscar por Equipo o Liga"
               filled
             >
+              <template v-slot:prepend-inner>
+                <v-icon color="foreground">mdi-magnify</v-icon>
+              </template>
             </v-text-field>
           </v-card>
         </v-col>
@@ -27,7 +30,7 @@
       </v-row>
     </v-card>
     <v-toolbar color="transparent" flat>
-      <v-toolbar-title class="accent--text text-h5 ml-n4">
+      <v-toolbar-title class="accent--text text-h4 ml-n4">
         Eventos
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -40,13 +43,16 @@
                 filled
                 hide-details=""
                 rounded
-                prepend-inner-icon="mdi-calendar"
                 background-color="secondary"
                 color="accent"
                 dense
                 class="shrink"
-              ></v-text-field
-            ></v-card>
+              >
+                <template v-slot:prepend-inner>
+                  <v-icon color="foreground">mdi-calendar</v-icon>
+                </template>
+              </v-text-field></v-card
+            >
           </v-col>
         </v-row>
       </v-card>
@@ -71,11 +77,11 @@
           <v-menu v-if="more.length" bottom left open-on-hover>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
-                text
-                class="align-self-center mr-4 caption"
+                class="align-self-center mr-4 caption opacity"
                 v-bind="attrs"
                 v-on="on"
-                small
+                solo-inverted
+                outlined
                 :ripple="false"
               >
                 <v-icon left> mdi-menu-down </v-icon>
@@ -101,19 +107,35 @@
     <v-card color="transparent" flat>
       <v-row justify="center">
         <v-col cols="12">
-          <table></table>
+          <table-event></table-event>
           <v-divider class="mt-4"></v-divider>
         </v-col>
       </v-row>
     </v-card>
+    <v-dialog
+      v-model="dialog"
+      scrollable
+      :overlay="false"
+      max-width="720px"
+      transition="dialog-transition"
+    >
+      <v-card color="secondary">
+        <v-card-title> Formulario Evento </v-card-title>
+        <v-card-text>
+          <form-event></form-event>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
 <script>
-import Table from '~/components/Table.vue'
+import TableEvent from '~/components/Table.vue'
+import FormEvent from '~/components/Form.vue'
 export default {
-  components: { Table },
+  components: { TableEvent, FormEvent },
   data: () => ({
+    dialog: true,
     headers: [
       {
         text: 'Dessert (100g serving)',

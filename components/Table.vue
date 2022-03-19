@@ -12,9 +12,7 @@
                   class="align-self-center text-capitalize mr-4 caption"
                   v-bind="attrs"
                   v-on="on"
-                  x-small
                   :ripple="false"
-                  color="accent"
                 >
                   más eventos
                   <v-icon right> mdi-menu-down </v-icon>
@@ -39,16 +37,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-ripple @click="addItem('hola')" class="rounded" width="14%">
-          <td class="rounded-l secondary">
+        <tr
+          v-ripple
+          class="rounded"
+          width="14%"
+          v-for="item in 10"
+          :key="'#item - ' + item"
+        >
+          <td class="rounded-l" v-bind:class="{ opacity: item % 2 != 0 }">
             <v-list-item two-line dense>
               <v-list-item-content>
-                <v-list-item-title>13:00</v-list-item-title>
+                <v-list-item-title>13:00 </v-list-item-title>
                 <v-list-item-subtitle>24 Agust</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </td>
-          <td class="secondary" width="33%">
+          <td v-bind:class="{ opacity: item % 2 != 0 }" width="33%">
             <v-list-item two-line dense>
               <v-list-item-content>
                 <v-list-item-title>Real Madrid</v-list-item-title>
@@ -56,13 +60,15 @@
               </v-list-item-content>
             </v-list-item>
           </td>
-          <td class="secondary" width="11%">
+          <td v-bind:class="{ opacity: item % 2 != 0 }" width="11%">
             <v-card class="d-flex justify-center" color="transparent" flat>
               <v-text-field
                 name="name"
-                background-color="background"
                 hide-details=""
                 dense
+                number
+                readonly
+                background-color="secondary"
                 rounded
                 filled
                 class="shrink body-2"
@@ -71,11 +77,11 @@
               ></v-text-field>
             </v-card>
           </td>
-          <td class="secondary" width="11%">
+          <td v-bind:class="{ opacity: item % 2 != 0 }" width="11%">
             <v-card class="d-flex justify-center" color="transparent" flat>
               <v-text-field
                 name="name"
-                background-color="background"
+                background-color="secondary"
                 hide-details=""
                 dense
                 rounded
@@ -86,11 +92,11 @@
               ></v-text-field>
             </v-card>
           </td>
-          <td class="secondary" width="11%">
+          <td v-bind:class="{ opacity: item % 2 != 0 }" width="11%">
             <v-card class="d-flex justify-center" color="transparent" flat>
               <v-text-field
                 name="name"
-                background-color="background"
+                background-color="secondary"
                 hide-details=""
                 dense
                 rounded
@@ -101,7 +107,11 @@
               ></v-text-field>
             </v-card>
           </td>
-          <td class="rounded-r secondary" width="20%">
+          <td
+            class="rounded-r"
+            width="20%"
+            v-bind:class="{ opacity: item % 2 != 0 }"
+          >
             <v-list-item dense>
               <v-list-item-avatar class="mx-0">
                 <v-icon>mdi-bitcoin</v-icon>
@@ -112,22 +122,23 @@
             </v-list-item>
           </td>
         </tr>
-        <tr v-ripple class="rounded">
-          <td colspan="6">hola</td>
-        </tr>
-        <tr>
-          <td class="rounded secondary" colspan="6">hola</td>
-        </tr>
-        <tr>
-          <td class=" " colspan="6">hola</td>
-        </tr>
       </tbody>
     </template>
   </v-simple-table>
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    more: [
+      'Football',
+      'Basketball',
+      'Football Americano',
+      'Hoockie',
+      'Baseball',
+    ],
+  }),
+}
 </script>
 
-<style></style>
+<style scoped></style>
