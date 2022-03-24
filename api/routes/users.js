@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-import { index } from '../controllers/events'
 
-router.get('/', index)
+router.get('/', (req, res) => {
+  res.send('usuarios')
+})
 
 module.exports = router
