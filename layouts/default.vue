@@ -1,5 +1,9 @@
 <template>
   <v-app dark :style="{ background: $vuetify.theme.themes.dark.background }">
+    <v-app-bar v-if="$vuetify.breakpoint.mobile">
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </v-app-bar>
+
     <sidebar></sidebar>
     <v-navigation-drawer right width="240" color="background" floating app>
       secodary

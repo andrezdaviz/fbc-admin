@@ -2,78 +2,40 @@
   <v-row>
     <v-col cols="4">
       <v-card class="d-flex justify-center" flat color="transparent">
-        <v-select
-          hide-details=""
-          class="shrink body-2"
-          filled
-          dense
-          placeholder="Deporte"
-          rounded
-        >
-        </v-select>
+        <select-item
+          select="sport"
+          placeholder="Elegir Deporte"
+          @input="sport($event)"
+        ></select-item>
       </v-card>
     </v-col>
     <v-col cols="4">
       <v-card class="d-flex justify-center" flat color="transparent">
-        <v-select
-          hide-details=""
-          class="shrink body-2"
-          filled
-          dense
-          :items="itemsCountries"
-          placeholder="Pais"
-          rounded
-        >
-        </v-select>
+        <select-item
+          select="country"
+          placeholder="Elegir Pais"
+          @input="country($event)"
+        ></select-item>
       </v-card>
     </v-col>
     <v-col cols="4">
       <v-card class="d-flex justify-center" flat color="transparent">
-        <v-select
-          hide-details=""
-          class="shrink body-2"
-          filled
-          dense
-          placeholder="Liga"
-          :items="items"
-          rounded
-        >
-        </v-select>
+        <select-item
+          select="league"
+          placeholder="Elegir Liga"
+          :idSport="idSport"
+          :idCountry="idCountry"
+        ></select-item>
       </v-card>
     </v-col>
     <v-col cols="6">
       <v-card class="d-flex justify-center" flat color="transparent">
-        <v-select
-          hide-details=""
-          class="body-2"
-          filled
-          dense
-          placeholder="Equipo 1"
-          rounded
-          :items="itemsTeams"
-        >
-        </v-select>
+        <select-item select="team" placeholder="Equipo 1"></select-item>
       </v-card>
     </v-col>
     <v-col cols="6">
       <v-card class="d-flex justify-center" flat color="transparent">
-        <v-select
-          hide-details=""
-          class="body-2"
-          filled
-          dense
-          :items="itemsTeams"
-          placeholder="Equipo 2"
-          rounded
-        >
-          <template v-slot:item="{ item, on }">
-            <v-list-item link class="secondary" v-on="on">
-              <v-list-item-title>
-                {{ item }}
-              </v-list-item-title>
-            </v-list-item>
-          </template>
-        </v-select>
+        <select-item select="team" placeholder="Equipo 2"></select-item>
       </v-card>
     </v-col>
     <v-col cols="3">
@@ -151,8 +113,13 @@
 </template>
 
 <script>
+import SelectItem from './SelectItem.vue'
 export default {
+  components: { SelectItem },
   data: () => ({
+    event: null,
+    idSport: null,
+    idCountry: null,
     itemsTeams: [
       'Manchester City',
       'Brighton & Hove Albion',
@@ -175,6 +142,18 @@ export default {
       'Copa Sudamericana',
     ],
   }),
+
+  methods: {
+    sport(e) {
+      console.log(e)
+      const id = e.target.value
+      this.idSport = id
+    },
+    country(e) {
+      const id = e.target.value
+      this.idCountry = id
+    },
+  },
 }
 </script>
 

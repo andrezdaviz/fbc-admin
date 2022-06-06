@@ -22,7 +22,7 @@
         </v-col>
         <v-col cols="4">
           <div class="float-right">
-            <v-btn color="primary" flat @click="dialog = !dialog"
+            <v-btn :ripple="false" color="secondary" @click="dialog = !dialog"
               ><v-icon left>mdi-plus-circle-outline</v-icon>Evento</v-btn
             >
           </div>
@@ -133,8 +133,29 @@ s
 import moment from 'moment'
 import TableEvent from '~/components/Table.vue'
 import FormEvent from '~/components/Form.vue'
+import { useStore } from '../store/index'
 export default {
   components: { TableEvent, FormEvent },
+
+  // asyncData({ $pinia }) {
+  //   const store = useStore($pinia)
+  //   console.log(store)
+  //   return store
+  // },
+
+  setup() {
+    const store = useStore()
+    return { store }
+  },
+
+  mounted() {
+    if (this.teams.length) {
+      return
+    }
+
+    this.store.getItemsSelect()
+  },
+
   data: () => ({
     dialog: false,
     headers: [
@@ -164,6 +185,12 @@ export default {
   methods: {
     addItem(item) {
       console.log(item)
+    },
+  },
+
+  computed: {
+    teams() {
+      return this.store.teams
     },
   },
 }
